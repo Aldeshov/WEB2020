@@ -1,0 +1,191 @@
+header {
+    background-color: #3b5998;
+    background-image: linear-gradient(#4e69a2, #3b5998 50%);
+    border-bottom: 1px solid #133783;
+    min-height: 42px;
+    position: relative;
+    z-index: 1;
+    line-height: 1.34;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 82px;
+}
+
+#headercontent {
+    margin: 0px 269.600px 0px 269.600px;
+    margin: 0 auto;
+    font-family: inherit;
+    padding-top: 13px;
+    width: 980px;
+    color: #1c1e21;
+    direction: ltr;
+    line-height: 1.34;
+    clear: both;
+    content: '.';
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+#facebooklogo {
+    display: block;
+    float: left;
+    width: 168px;
+    height: 34px;
+}
+
+#facebooklogo h1 {
+    font-family: inherit;
+    font-size: 14px;
+    color: #1c1e21;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    direction: ltr;
+    line-height: 1.34;
+}
+
+#facebooklogo h1 a {
+    font-family: inherit;
+    color: #385898;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    direction: ltr;
+    line-height: 1.34;
+}
+
+#facebooklogo h1 a i {
+    margin-top: 17px;
+    width: 168px;
+    height: 34px;
+    background-position: 0 -250px;
+    background-image: url(https://static.xx.fbcdn.net/rsrc.php/v3/y6/r/dMBviK_Jabq.png);
+    background-size: 500px 324px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    font-style: italic;
+    font-family: inherit;
+    color: #385898;
+    cursor: pointer;
+}
+
+#facebooklogo h1 a i u {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    left: auto;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    text-decoration: underline;
+    font-style: italic;
+    font-family: inherit;
+    color: #385898;
+    cursor: pointer;
+    font-weight: 600;
+    direction: ltr;
+    line-height: 1.34;
+
+}
+
+#facebookimg {
+    margin-top: 17px;
+    height: 100%;
+}
+
+#inputs {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    float: right;
+    width: 469.600px;
+    height: 64.800px;
+}
+
+#forgotpass {
+    color: rgb(156, 180, 216);
+}
+
+#forgotpass:hover {
+    text-decoration: underline;
+}
+
+#enter {
+    color: white;
+    background-color: rgb(66, 103, 178);
+    border: 1px solid rgb(41, 72, 125) ;
+    border-radius: 2px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    -webkit-font-smoothing: antialiased;
+    font-weight: bold;
+    line-height: 18px;
+    padding: 2px 6px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+#bodyid {
+    background: linear-gradient(white, #D3D8E8);
+    position: absolute;
+    top: 82px;
+    left: 0;
+    width: 100%;
+    height: 630px;
+    line-height: 1.34;
+}
+
+#textid {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #0e385f;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 29px;
+    margin-top: 40px;
+    width: 450px;
+    word-spacing: -1px;
+}
+
+#register {
+    float: right;
+}
+
+#register h2 {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+    position: relative;
+    font-weight: 300;
+    font-size: 20px;
+    top: -360px;
+    left: -160px;
+}
+
+#register h1{
+    font-family: Helvetica, Arial, sans-serif;
+    color: #333;
+    position: relative;
+    font-size: 36px;
+    top: -320px;
+    left: -160px;
+}
+
+#content {
+    margin: 0px 269.600px 0px 269.600px;
+}
+
+table {
+    border-spacing: 10px 2px;
+}
