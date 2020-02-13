@@ -1,0 +1,26 @@
+li {
+    
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-right: 20px;
+    box-sizing: border-box;
+    margin-left: 0;
+}
+
+li img {
+    border-radius: 3px;
+    border: 2px solid rgb(195,195,195);
+}
+
+button a {
+    color: white;
+}
+#Image img {
+    border-radius: 3px;
+    border: 2px solid rgb(195,195,195);
+}
+
+li img:hover {
+    border: 2px solid red;
+}
