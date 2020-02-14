@@ -1,7 +1,7 @@
-<div>
+<div id="Item">
 
   <h3>
-    <a [href]="product.link" [title]="product.name + ': ' + product.id">
+    <a [href]="product.link" [title]="product.name + ': ' + product.id" target="_blank">
       {{ product.name }}
     </a>
   </h3>
@@ -9,6 +9,7 @@
   <h2>
     {{ product.price + " P" }}
   </h2>
+
   <p *ngIf="product.description">
     Description: {{ product.description }}
   </p>
@@ -16,13 +17,17 @@
   <div id="Image">
     <img [src]="product.gallery[0]" height="320px" [id]="product.id"/>
   </div>
+
   <ul>
     <li *ngFor="let image of product.gallery">
       <img [src]=image height="50px" [alt]=product.name (click)="showImage(image)">
     </li>
   </ul>
-  
+
+  <a [id]="product.id + 'l'" target="_blank">
     <button (click)="share()" >
-      <a [id]="product.id + 'l'">Share with Telegram</a>
+      Share with Telegram
     </button>
+  </a>
+
 </div>

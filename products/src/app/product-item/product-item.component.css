@@ -1,5 +1,5 @@
 li {
-    
+    padding: 1px 1px 1px 1px;
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
@@ -11,16 +11,26 @@ li {
 li img {
     border-radius: 3px;
     border: 2px solid rgb(195,195,195);
+    transition: 0.4s linear;
 }
 
-button a {
-    color: white;
-}
 #Image img {
     border-radius: 3px;
     border: 2px solid rgb(195,195,195);
+    transition-duration: 1s;
+}
+
+#Image img:hover {
+    transition-duration: 1s;
+    height: 600px;
 }
 
 li img:hover {
-    border: 2px solid red;
+    border: 2px solid rgb(240, 36, 40);
+    transition: 0.4s linear;
+}
+
+#Item {
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(195, 195, 195);
 }
