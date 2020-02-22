@@ -1,7 +1,6 @@
 .category {
     cursor: pointer;
     background-color: rgb(240, 240, 240);
-    font-weight: 500;
     transition: 0.4s;
     display: flex;
     align-items: center;
@@ -33,7 +32,7 @@ a {
 .head {
     background-color: rgb(242, 242, 242);
     display: flex;
-    font-weight: bolder;
+    font-weight: 900;
     width: 100px;
     align-items: center;
     justify-content: space-around;
