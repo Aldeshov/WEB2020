@@ -1,7 +1,5 @@
 <div class="mainhead">
-    <a [href]="category.link"  target="_blank">
-        <h2 *ngIf="products"> {{ category.name }} </h2>
-    </a>
+    <h2 *ngIf="products.length">Products</h2>
 </div>
 
 <div class="products">

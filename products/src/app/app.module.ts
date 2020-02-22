@@ -1,28 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductListComponent } from './product-list/product-list.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { CategoryComponent } from './category/category.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AllProductListComponent } from './all-product-list/all-product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TopBarComponent,
     ProductItemComponent,
-    ProductListComponent
+    ProductListComponent,
+    CategoryComponent,
+    AllProductListComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-      { path: '', component: ProductListComponent },
-    ])
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

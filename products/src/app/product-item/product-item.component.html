@@ -6,13 +6,13 @@
     </a>
   </h3>
 
-  <h2>
-    {{ product.price + " P" }}
-  </h2>
-
   <p *ngIf="product.description">
     Description: {{ product.description }}
   </p>
+  
+  <h2>
+    {{ product.price + " " + product.currency }}
+  </h2>
   
   <div id="Image">
     <img [src]="product.gallery[0]" height="320px" [id]="product.id"/>

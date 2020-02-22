@@ -1,0 +1,7 @@
+<a class="head" routerLink="/category">Home</a>
+
+<div *ngFor="let c of categories" class="categories">
+    <a routerLink="/categories/{{c.id}}/products" class="category">
+        <span> {{ c.name }} </span>
+    </a>
+</div>

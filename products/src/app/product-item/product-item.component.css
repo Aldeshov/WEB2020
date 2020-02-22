@@ -3,19 +3,22 @@ li {
     display: inline-block;
     vertical-align: middle;
     cursor: pointer;
-    margin-right: 20px;
     box-sizing: border-box;
-    margin-left: 0;
+    margin-left: 20px;
+}
+
+ul {
+    margin-right: 55px;
 }
 
 li img {
-    border-radius: 3px;
+    border-radius: 5px;
     border: 2px solid rgb(195,195,195);
     transition: 0.4s linear;
 }
 
 #Image img {
-    border-radius: 3px;
+    border-radius: 10px;
     border: 2px solid rgb(195,195,195);
     transition-duration: 1s;
 }
@@ -26,11 +29,45 @@ li img {
 }
 
 li img:hover {
-    border: 2px solid rgb(240, 36, 40);
+    border: 2px solid rgb(61, 44, 44);
     transition: 0.4s linear;
 }
 
 #Item {
     padding-bottom: 10px;
-    border-bottom: 2px solid rgb(195, 195, 195);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h3 a{
+    font-family: Calibri Light;
+    color: black;
+    transition: 0.4s;
+    border-radius: 3px;
+    border: 1px solid rgb(195,195,195);
+}
+
+a {
+    text-decoration: none;
+}
+
+h3 a:hover {
+    font-weight: 800;
+    background-color: rgb(195,195,195);
+    transition: 0.4s;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    font-family: Calibri;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: white;
+    border: none;
 }
