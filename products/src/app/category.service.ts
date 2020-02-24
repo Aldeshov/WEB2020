@@ -30,12 +30,7 @@ export class CategoryService {
   }
 
   getCategory(id: string):Observable<Category> {
-    for(let i = 0; i < Categories.length; i++) {
-      if(Categories[i].id.includes(id, 0)) {
-        return of(Categories[i]);
-      }
-    }
-    return of(null);
+    return of(Categories.find(category => category.id === id));
   }
 
   getProduct(id: string):Observable<Product> {
