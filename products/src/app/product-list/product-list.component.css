@@ -7,9 +7,9 @@
 
 .products {
     display: flex;
-    flex: 1 100px;
-    flex-direction: row;
+    flex-direction: column;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 .product {
@@ -24,6 +24,7 @@
 
 .product:hover {
     background-color: rgb(225, 225, 225);
+    border: 1px solid rgb(200, 200, 200);
     transition: 0.4s;
 }
 

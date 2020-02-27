@@ -7,9 +7,8 @@
 
 .products {
     display: flex;
-    flex: 1 100px;
-    flex-direction: row;
     flex-flow: row wrap;
+    justify-content: center;
 }
 
 .product {

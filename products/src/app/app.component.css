@@ -1,7 +1,8 @@
 app-category {
     display: flex;
-    flex-direction: row;
-    height: 50px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    min-height: 50px;
     background-color: rgb(243, 243, 243);
     border-bottom: 1px solid rgb(230, 230, 230);
 }

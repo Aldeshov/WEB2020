@@ -1,7 +1,7 @@
 <a class="head" routerLink="/categories">Home</a>
 
-<div *ngFor="let c of categories" class="categories">
-    <a routerLink="/categories/{{c.id}}/products" class="category">
+<div class="categories">
+    <a *ngFor="let c of categories" routerLink="/categories/{{c.id}}/products" class="category">
         <a routerLink="/categories">
             <span > {{ c.name }} </span>
         </a>
