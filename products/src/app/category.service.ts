@@ -22,7 +22,7 @@ export class CategoryService {
   categoryProduct(id: string):Observable<Product[]> {
     let temp: Product[] = [];
     for(let i = 0; i < PRODUCTS.length; i++) {
-      if(PRODUCTS[i].categoryid.includes(id, 0)) {
+      if(PRODUCTS[i].categoryid == id) {
         temp.push(PRODUCTS[i]);
       }
     }
