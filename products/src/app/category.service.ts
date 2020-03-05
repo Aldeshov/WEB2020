@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
 
 import { Observable, of } from 'rxjs';
 
 import { Product } from './product';
 import { Category } from './category';
-import { PRODUCTS } from './products';
-import { Categories } from './categories';
 
 @Injectable({
   providedIn: 'root'
@@ -13,31 +13,44 @@ import { Categories } from './categories';
 
 export class CategoryService {
   
-  constructor() {  }
+  private productsUrl = 'api/products';
+  private categoriesUrl = 'api/categories';
+
+  constructor(private http: HttpClient) {  }
 
   allProducts():Observable<Product[]> {
-    return of(PRODUCTS);
+    return this.http.get<Product[]>(this.productsUrl).pipe(
+      catchError(this.handleError<Product[]>('productsUrl', []))
+    );
   }
 
   categoryProduct(id: string):Observable<Product[]> {
     let temp: Product[] = [];
-    for(let i = 0; i < PRODUCTS.length; i++) {
-      if(PRODUCTS[i].categoryid == id) {
-        temp.push(PRODUCTS[i]);
-      }
-    }
-    return of(temp);
+    return this.http.get<Product[]>(this.productsUrl).pipe(map(products => products.filter(product => product.categoryid === id)));
   }
 
   getCategory(id: string):Observable<Category> {
-    return of(Categories.find(category => category.id === id));
+    const url = `${this.categoriesUrl}/${id}`;
+    return this.http.get<Category>(url).pipe(catchError(this.handleError<Category>('categoriesUrl')));
   }
 
   getProduct(id: string):Observable<Product> {
-    return of(PRODUCTS.find(product => product.id === id));
+    const url = `${this.productsUrl}/${id}`;
+    return this.http.get<Product>(url).pipe(catchError(this.handleError<Product>('productsUrl')));
   }
 
   getCategories():Observable<Category[]> {
-    return of(Categories);
+    return this.http.get<Category[]>(this.categoriesUrl).pipe(catchError(this.handleError<Category[]>('categoriesUrl')));
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 }
