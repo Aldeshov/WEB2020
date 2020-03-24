@@ -1,0 +1,280 @@
+.welcome-content {
+    display: flex;
+    align-content: center;
+    flex-flow: column wrap;
+    font-family: Corbel;
+    padding-top: 25px;
+}
+
+.something {
+    transition: 0.3s;
+    background-color: rgb(245,245,245);
+}
+
+.something:hover {
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: rgb(210,210,210);
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(245,245,245);
+    border-radius: 15px;
+    padding: 5px;
+    border: 1px solid rgb(200,200,200);
+    background-color: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.days {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-weight: 600;
+}
+
+.day {
+    border: none;
+    font: Calibri;
+    border-bottom: 1px solid rgb(175, 175, 175);
+    border-left: 1px solid rgb(175, 175, 175);
+    border-right: 1px solid rgb(175, 175, 175);
+    min-width: 150px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nothing, .something {
+    border: 1px solid rgb(175, 175, 175);
+    min-width: 150px;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.left, .x {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 13px;
+    min-width: 50px;
+    min-height: 50px;
+    top: 5px;
+    float: right;
+    user-select: none;
+    border-top: 1px solid rgb(200, 200, 200);
+    border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.x {
+    border-top: none;
+}
+
+.time {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.i {
+    font-weight: 600;
+}
+
+#line {
+    width: 150px; 
+    height: 3px;
+    position: relative;
+    z-index: 10;
+    user-select: none;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    user-select: none;
+    top: 25px;
+    left: 75px;
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    user-select: none;
+}
+
+h2:hover {
+    transition: 0.3s;
+    background-color: rgb(235,235,235);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h3 {
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+h4 {
+    font-weight: 100;
+}
+
+.new {
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+.new:hover {
+    background-color: rgb(245,245,245);
+    cursor: pointer;
+}
+
+.menu {
+    position: fixed;
+    transition: 0.3s;
+    top: 25px;
+    left: 25px;
+}
+
+.last {
+    position: relative;
+    user-select: none;
+    min-width: 150px;
+    left: 15px;
+    top: 75px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(245,245,245);
+    border-radius: 15px;
+    border: 1px solid rgb(200,200,200);
+    background-color: white;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+.ml {
+    display: block;
+    position: relative;
+    width: 15px;
+    height: 2.5px;
+    background-color: rgb(150, 150, 150);
+    margin-bottom: 3px;
+    z-index: 100;
+}
+
+.first {
+    position: relative;
+    top: 1px;
+    transition: 0.3s;
+}
+
+.first::after {
+    transition: 0.3s;
+}
+.m {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    font-family: Calibri;
+    width: 9%;
+}
+
+.menu:hover {
+    transition: 0.3s;
+    background-color: rgb(200, 200, 200);
+    cursor: pointer;
+}
+
+.o {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgb(220,220,220);
+    transition: 0.1s;
+}
+
+.o:hover {
+    background-color: rgb(175, 175, 175);
+    cursor: pointer;
+}
+
+.f {
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+}
+
+.e {
+    border-bottom: none;
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
+
+.hidden {
+    display: none;
+    transition: 0.1s;
+}
+
+.before {
+    visibility: visible;
+    transition: 0.1s;
+}
+
+.before1 {
+    transform: none;
+    top: 0;
+    transition: 0.2s;
+}
+
+.before2 {
+    transform: none;
+    bottom: 0;
+    transition: 0.2s;
+}
+
+.after {
+    visibility: hidden;
+    transition: 0.1s;
+}
+
+.after1 {
+    transform: rotate(45deg);
+    top: 5.5px;
+    transition: 0.2s;
+}
+
+.after2 {
+    transform: rotate(-45deg);
+    bottom: 5.5px;
+    transition: 0.2s;
+}
+
+.foot {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 15px;
+}

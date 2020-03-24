@@ -25,7 +25,6 @@ export class CategoryService {
   }
 
   categoryProduct(id: string):Observable<Product[]> {
-    let temp: Product[] = [];
     return this.http.get<Product[]>(this.productsUrl).pipe(map(products => products.filter(product => product.categoryid === id)));
   }
 
