@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { StudentService } from '../student.service'
+import { UserService } from '../user.service'
 import { Student } from '../oop/Student'
+import { Teacher } from '../oop/Teacher'
 import { range } from 'rxjs';
 import { Course } from '../oop/Course';
+import { User } from '../oop/User';
+import { News } from '../oop/News';
 
 @Component({
   selector: 'app-welcome',
@@ -13,19 +16,24 @@ import { Course } from '../oop/Course';
 })
 export class WelcomeComponent implements OnInit {
   
-  s: Student = null;
+  u: User = null;
+  news: News[] = [];
+  type: String = "null";
   title: String = "Welcome";
+
   day = new Date().getDay() - 1;
   hour = new Date().getHours();
   min: number = new Date().getMinutes();
-  newsCount: number[] = [];
+  
   sch: Course[][] = [];
+
   anums: number[] = [];
   bnums: number[] = [];
-  constructor(private studentService: StudentService, private router: Router) { }
+  
+  constructor(private userService: UserService, private router: Router) { }
   
   ngOnInit(): void {
-    
+
     if(this.day == -1)
     {
       this.day = 6;
@@ -38,6 +46,7 @@ export class WelcomeComponent implements OnInit {
       document.getElementById("welcome").style.background = "linear-gradient(#272383, #d6e4ec)";
       document.getElementById("background").style.color = "white";
     }
+
     if(this.hour >= 5 && this.hour <= 11)
     {
       this.title = "Good morning";
@@ -75,20 +84,37 @@ export class WelcomeComponent implements OnInit {
 
     range(0,7).subscribe(x => this.anums[x] = x);
     range(0,13).subscribe(x => this.bnums[x] = x);
-    
-    this.studentService.checkCookie("userName","userPassword").subscribe(s => this.func(s));
+
+    this.userService.getNews().subscribe(n => this.news = n);
+    this.userService.checkCookie("userName","userPassword").subscribe(u => this.func(u));
   }
 
-  func(s: Student) {
-    if(s != null)
+  func(u: User) {
+    if(u != null)
     {
-      this.s = s;
-      range(0,s.news.length).subscribe(x => this.newsCount[x] = x);
-      for(let i = 0; i < s.courses.length; i++)
+      if(u.type == "Student")
       {
-        for(let j = 0; j < s.courses[i].schedule.length; j++)
+        this.u = (<Student> u);
+
+        this.type = "Student";
+
+        for(let i = 0; i < (<Student> u).courses.length; i++)
         {
-          this.sch[s.courses[i].schedule[j][0]][s.courses[i].schedule[j][1]] = s.courses[i];
+          for(let j = 0; j < (<Student> u).courses[i].schedule.length; j++)
+          {
+            this.sch[(<Student> u).courses[i].schedule[j][0]][(<Student> u).courses[i].schedule[j][1]] = (<Student> u).courses[i];
+          }
+        }
+      }
+      else 
+      {
+        if(u.type == "Teacher")
+        {
+          this.u = (<Teacher> u);
+
+          this.type = "Teacher";
+
+          this.userService.getTeacherCourses((<Teacher> this.u).id).subscribe(cs => this.teachersch(cs));
         }
       }
     }
@@ -109,7 +135,13 @@ export class WelcomeComponent implements OnInit {
     return temp;
   }
 
-  openclose() {
-    alert()
+  teachersch(courses: Course[]) {
+    for(let i = 0; i < courses.length; i++)
+    {
+      for(let j = 0; j < courses[i].schedule.length; j++)
+      {
+        this.sch[courses[i].schedule[j][0]][courses[i].schedule[j][1]] = courses[i];
+      }
+    }
   }
 }

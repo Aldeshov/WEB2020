@@ -1,6 +1,8 @@
-export abstract class User
+export class User
 {
-    protected id: String;
-	protected userName: String;
-    protected userPassword: String;
+    id: String;
+	login: String;
+    password: String;
+    type: String;
+    name: String;
 }

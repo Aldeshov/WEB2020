@@ -1,5 +1,7 @@
 export class CourseFile 
 {
+	id: String;
 	name: String;
-	file: File;
+	path: String;
+	course: String;
 }

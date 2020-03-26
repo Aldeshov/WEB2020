@@ -1,4 +1,5 @@
 import { CourseFile } from './CourseFile'
+import { Teacher } from './Teacher';
 
 export class Course 
 {
@@ -6,7 +7,6 @@ export class Course
 	name: String;
 	credits: number;
 	schedule: number[][] = [];
-	courseFiles: CourseFile[];
-	teacherName: String;
-	cabinet: String;
+	teacher: Teacher;
+	room: String;
 }

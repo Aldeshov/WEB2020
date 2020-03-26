@@ -4,10 +4,9 @@ import { Course } from './Course'
 export class Student extends User 
 {
 	id: String;
-	userName: String;
-	userPassword: String;
+	login: String;
+	password: String;
 	name: String;
-	courses: Course[] = [];
-	newHeaders: String[];
-	news: String[];
+	courses: Course[];
+	type: String;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { Student } from '../oop/Student'
-import { StudentService } from '../student.service'
+import { UserService } from '../user.service'
+import { User } from '../oop/User';
 
 @Component({
   selector: 'app-initial',
@@ -11,14 +11,14 @@ import { StudentService } from '../student.service'
 })
 export class InitialComponent implements OnInit {
 
-  constructor(private studentService: StudentService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    this.studentService.checkCookie("userName","userPassword").subscribe(s => this.check(s));
-    if(this.studentService.getCookie("userName") != "")
+    this.userService.checkCookie("userName","userPassword").subscribe(u => this.check(u));
+    if(this.userService.getCookie("userName") != "")
     {
-      (<HTMLInputElement> document.getElementById("inname")).value = this.studentService.getCookie("userName");
-      this.studentService.setCookie("userName",this.studentService.getCookie("userName"),0.001);
+      (<HTMLInputElement> document.getElementById("inname")).value = this.userService.getCookie("userName");
+      this.userService.setCookie("userName",this.userService.getCookie("userName"),0.001);
     }
   }
 
@@ -27,25 +27,25 @@ export class InitialComponent implements OnInit {
     let userPassword = (<HTMLInputElement> document.getElementById("inpassword")).value;
     let c = (<HTMLInputElement> document.getElementById("save")).checked;
 
-    this.studentService.getStudent(userName, userPassword).subscribe(s => this.check(s, c, true));
+    this.userService.getUser(userName, userPassword).subscribe(u => this.check(u, c, true));
   }
-  
-  check(s: Student, check = false, d = false): void {
-    if(s != null) {
-      let userName = s.userName;
-      let userPassword = s.userPassword;
+
+  check(u: User, check = false, d = false): void {
+    if(u != null) {
+      let userName = u.login;
+      let userPassword = u.password;
 
       if(check)
       {
-        this.studentService.setCookie("userName",userName, 99);
-        this.studentService.setCookie("userPassword",userPassword, 99);
+        this.userService.setCookie("userName",userName, 99);
+        this.userService.setCookie("userPassword",userPassword, 99);
       }
       else
       {
         if(d)
         {
-          this.studentService.setCookie("userName",userName, 0.001);
-          this.studentService.setCookie("userPassword",userPassword, 0.001);
+          this.userService.setCookie("userName",userName, 0.001);
+          this.userService.setCookie("userPassword",userPassword, 0.001);
         }
       }
       this.router.navigate(['/welcome']);

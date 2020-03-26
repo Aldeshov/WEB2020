@@ -4,23 +4,41 @@ import { catchError, map} from 'rxjs/operators';
 
 import { Observable, of } from 'rxjs';
 
-import { Student } from './oop/Student'
+import { User } from './oop/User';
+import { News } from './oop/News';
+import { Course } from './oop/Course';
+import { CourseFile } from './oop/CourseFile';
 
 @Injectable({
   providedIn: 'root'
 })
-export class StudentService {
+export class UserService {
 
-  private studentUrl = 'api/Students';
+  private usersUrl = 'api/Users';
+  private newsUrl = 'api/News';
+  private coursesUrl = 'api/Courses';
+  private filesUrl = 'api/Files';
 
   constructor(private http: HttpClient) { }
 
-  getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.studentUrl).pipe(catchError(this.handleError<Student[]>('studentUrl', [])));
+  getUser(log: String, pass: String): Observable<User> {
+    return this.http.get<User[]>(this.usersUrl).pipe(map(users => users.find(s => s.login == log && s.password == pass),catchError(this.handleError<User[]>('coursesUrl', []))))
   }
 
-  getStudent(uName: String, uPassword: String): Observable<Student> {
-    return this.http.get<Student[]>(this.studentUrl).pipe(map(students => students.find(s => s.userName == uName && s.userPassword == uPassword),catchError(this.handleError<Student[]>('studentUrl', []))))
+  getNews(): Observable<News[]> {
+    return this.http.get<News[]>(this.newsUrl).pipe(catchError(this.handleError<News[]>('newsUrl', [])));
+  }
+
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.coursesUrl).pipe(catchError(this.handleError<Course[]>('coursesUrl', [])));
+  }
+
+  getFiles(): Observable<CourseFile[]> {
+    return this.http.get<CourseFile[]>(this.filesUrl).pipe(catchError(this.handleError<CourseFile[]>('filesUrl', [])));
+  }
+
+  getTeacherCourses(teacherid: String): Observable<Course[]> {
+    return this.http.get<Course[]>(this.coursesUrl).pipe(map(courses => courses.filter(c => c.teacher.id == teacherid),catchError(this.handleError<Course[]>('coursesUrl', []))))
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -57,12 +75,12 @@ export class StudentService {
     return "";
   }
 
-  checkCookie(un: String,pw: String): Observable<Student> {
+  checkCookie(un: String,pw: String): Observable<User> {
     var value1 = this.getCookie(un);
     var value2 = this.getCookie(pw);
     if (value1 != "" && value2 != "") 
     {
-      return this.getStudent(value1,value2);
+      return this.getUser(value1,value2);
     }
     return of(null);
   }
