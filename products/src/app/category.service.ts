@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 
 import { Observable, of } from 'rxjs';
 
@@ -13,33 +13,41 @@ import { Category } from './category';
 
 export class CategoryService {
   
-  private productsUrl = 'api/products';
-  private categoriesUrl = 'api/categories';
+  private baseurl = 'http://127.0.0.1:8000/api/';
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'content-type': 'application/json'
+  //   })
+  // }
+
+  private productsUrl = 'products';
+  private categoriesUrl = 'categories';
 
   constructor(private http: HttpClient) {  }
 
   allProducts():Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl).pipe(
+    return this.http.get<Product[]>(this.baseurl + this.productsUrl).pipe(
       catchError(this.handleError<Product[]>('productsUrl', []))
     );
   }
 
   categoryProduct(id: string):Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl).pipe(map(products => products.filter(product => product.categoryid === id)));
+    const url = `${this.baseurl + this.categoriesUrl}/${id}/products`;
+    return this.http.get<Product[]>(url).pipe(catchError(this.handleError<Product[]>('categoriesUrl')));
   }
 
   getCategory(id: string):Observable<Category> {
-    const url = `${this.categoriesUrl}/${id}`;
+    const url = `${this.baseurl + this.categoriesUrl}/${id}`;
     return this.http.get<Category>(url).pipe(catchError(this.handleError<Category>('categoriesUrl')));
   }
 
   getProduct(id: string):Observable<Product> {
-    const url = `${this.productsUrl}/${id}`;
+    const url = `${this.baseurl + this.productsUrl}/${id}`;
     return this.http.get<Product>(url).pipe(catchError(this.handleError<Product>('productsUrl')));
   }
 
   getCategories():Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoriesUrl).pipe(catchError(this.handleError<Category[]>('categoriesUrl')));
+    return this.http.get<Category[]>(this.baseurl + this.categoriesUrl).pipe(catchError(this.handleError<Category[]>('categoriesUrl')));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

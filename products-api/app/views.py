@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.http.response import HttpResponse, JsonResponse
 from .models import Product, Category
 
+
 def to_json_category(item):
     return {
         "id": item.id,
         "name": item.name,
         "link": item.link
     }
+
 
 def to_json_product(item):
     return {
@@ -21,13 +23,16 @@ def to_json_product(item):
         "link": item.link
     }
 
+
 def categories(request):
-    categories = [to_json_category(n) for n in Category.objects.all()]
-    return JsonResponse(categories, safe=False)
+    ans = [to_json_category(n) for n in Category.objects.all()]
+    return JsonResponse(ans, safe=False)
+
 
 def products(request):
-    products = [to_json_product(n) for n in Product.objects.all()]
-    return JsonResponse(products, safe=False)
+    ans = [to_json_product(n) for n in Product.objects.all()]
+    return JsonResponse(ans, safe=False)
+
 
 def category(request, id):
     try:
@@ -36,12 +41,14 @@ def category(request, id):
         return JsonResponse({"error": str(e)}, safe=False)
     return JsonResponse(to_json_category(ans), safe=False)
 
+
 def product(request, id):
     try:
         ans = Product.objects.get(id=id)
     except Exception as e:
         return JsonResponse({"!ERROR": str(e)}, safe=False)
     return JsonResponse((to_json_product(ans)), safe=False)
+
 
 def category_product(request, id):
     try:

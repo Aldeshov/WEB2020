@@ -12,7 +12,7 @@ import { CategoryService } from '../category.service';
 
 export class ProductItemComponent implements OnInit {
 
-  product: Product;
+  product: Product = null;
 
   constructor(private route: ActivatedRoute, private categoryService: CategoryService) { }
 

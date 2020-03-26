@@ -13,8 +13,8 @@ import { CategoryService } from '../category.service';
 
 export class ProductListComponent implements OnInit { 
 
-  products: Product[];
-  category: Category;
+  products: Product[] = [];
+  category: Category = null;
   constructor(private categoryService: CategoryService, private route: ActivatedRoute) { }
 
   ngOnInit(){

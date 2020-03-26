@@ -25,7 +25,9 @@ SECRET_KEY = '0@7zb_v^047poo%*$_tbt6m+^msez0-wxqe(!=(%ayw^0r1s-s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = []
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = list(default_methods) + [
     'POKE',
@@ -88,8 +90,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'products.wsgi.application'
-
-CORS_ORIGIN_ALLOW_ALL = True
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
