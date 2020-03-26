@@ -50,7 +50,7 @@ export class InMemoryDataService implements InMemoryDbService {
     let Users: User[] = [
       (<Teacher> {id: "IDTEACH001", login: "teacher1", password: "password", name: "Mr. Teacher", type: "Teacher"}),
       (<Teacher> {id: "IDTEACH002", login: "teacher2", password: "password", name: "Ms. Teacher", type: "Teacher"}),
-      (<Student> {id: "IDSTUD0001", login: "student", password: "password", name: "Azat", courses: [Courses[0], Courses[1], Courses[2]], type: "Student"}),
+      (<Student> {id: "IDSTUD0001", login: "student", password: "password", name: "Student", courses: [Courses[0], Courses[1], Courses[2]], type: "Student"}),
       (<Student> {id: "IDSTUD0002", login: "student1", password: "password", name: "Student A", courses: [Courses[1], Courses[2]], type: "Student"}),
       (<Student> {id: "IDSTUD0003", login: "student2", password: "password", name: "Student B", courses: [Courses[0], Courses[1]], type: "Student"})
     ];
