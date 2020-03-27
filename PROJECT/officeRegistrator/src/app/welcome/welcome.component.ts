@@ -17,6 +17,7 @@ import { News } from '../oop/News';
 export class WelcomeComponent implements OnInit {
   
   u: User = null;
+
   news: News[] = [];
   type: String = "null";
   title: String = "Welcome";
@@ -42,43 +43,24 @@ export class WelcomeComponent implements OnInit {
     if(this.hour >= 0 && this.hour <= 4)
     {
       this.title = "Good night";
-      document.getElementById("background").style.background = "url('../../assets/images/back/night_back.jpg')";
-      document.getElementById("welcome").style.background = "linear-gradient(#272383, #d6e4ec)";
-      document.getElementById("background").style.color = "white";
     }
 
     if(this.hour >= 5 && this.hour <= 11)
     {
       this.title = "Good morning";
-      document.getElementById("background").style.background = "url('../../assets/images/back/morning_back.jpg')";
-      document.getElementById("welcome").style.background = "linear-gradient(#c3c92d, #d6e4ec)";
-      document.getElementById("background").style.color = "black";
     }
     if(this.hour >= 12 && this.hour <= 17)
     {
       this.title = "Good afternoon";
-      document.getElementById("background").style.background = "url('../../assets/images/back/day_back.jpg')";
-      document.getElementById("welcome").style.background = "linear-gradient(#5298d6, #d6e4ec)";
-      document.getElementById("background").style.color = "black";
     }
     if(this.hour >= 18 && this.hour <= 22)
     {
       this.title = "Good evening";
-      document.getElementById("background").style.background = "url('../../assets/images/back/evening_back.jpg')";
-      document.getElementById("welcome").style.background = "linear-gradient(#e8b139, #d6e4ec)";
-      document.getElementById("background").style.color = "white";
     }
     if(this.hour >= 23)
     {
       this.title = "Good night";
-      document.getElementById("background").style.background = "url('../../assets/images/back/night_back.jpg')";
-      document.getElementById("welcome").style.background = "linear-gradient(#272383, #d6e4ec)";
-      document.getElementById("background").style.color = "white";
     }
-
-    document.getElementById("background").style.backgroundSize = "100% 100%";
-    document.getElementById("background").style.borderRadius = "20px";
-    document.getElementById("background").style.minHeight = "320px";
 
     this.sch = this.newArray(7,13);
 
@@ -143,5 +125,33 @@ export class WelcomeComponent implements OnInit {
         this.sch[courses[i].schedule[j][0]][courses[i].schedule[j][1]] = courses[i];
       }
     }
+  }
+  
+  modify(){
+    if(document.getElementById('menu').classList.contains('hidden'))
+    {
+      document.getElementById('menu').classList.remove('hidden');
+      document.getElementById('x1').classList.remove('before1');
+      document.getElementById('x').classList.remove('before');
+      document.getElementById('x2').classList.remove('before2');
+      document.getElementById('x1').classList.add('after1');
+      document.getElementById('x').classList.add('after');
+      document.getElementById('x2').classList.add('after2');
+    }
+    else
+    {
+      document.getElementById('menu').classList.add('hidden');
+      document.getElementById('x1').classList.remove('after1');
+      document.getElementById('x').classList.remove('after');
+      document.getElementById('x2').classList.remove('after2');
+      document.getElementById('x1').classList.add('before1');
+      document.getElementById('x').classList.add('before');
+      document.getElementById('x2').classList.add('before2');
+    }
+  }
+
+  logout() {
+    document.cookie='userPassword=;expires=Thu; 01 Jan 1970; path=/'; 
+    location.reload()
   }
 }

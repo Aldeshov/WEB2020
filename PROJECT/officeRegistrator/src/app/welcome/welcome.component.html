@@ -1,97 +1,103 @@
 <div [class.hidden]="!u" class="welcome-content" id="welcome">
-    <div class="m">
-        <div class="menu block" onclick="
-            if(document.getElementById('sh').classList.contains('hidden'))
-            {
-                document.getElementById('sh').classList.remove('hidden');
-                document.getElementById('x1').classList.remove('before1');
-                document.getElementById('x').classList.remove('before');
-                document.getElementById('x2').classList.remove('before2');
-                document.getElementById('x1').classList.add('after1');
-                document.getElementById('x').classList.add('after');
-                document.getElementById('x2').classList.add('after2');
-            }
-            else
-            {
-                document.getElementById('sh').classList.add('hidden');
-                document.getElementById('x1').classList.remove('after1');
-                document.getElementById('x').classList.remove('after');
-                document.getElementById('x2').classList.remove('after2');
-                document.getElementById('x1').classList.add('before1');
-                document.getElementById('x').classList.add('before');
-                document.getElementById('x2').classList.add('before2');
-                
-            }
-        ">
-
-        <div class="first">
-            <span class="ml before1" id="x1"></span>
-            <span class="ml before" id="x"></span>
-            <span class="ml before2" id="x2"></span>
+    <header>
+        <div class="btn" (click)="modify()">
+            <div>
+                <span class="ml before1" id="x1"></span>
+                <span class="ml before" id="x"></span>
+                <span class="ml before2" id="x2"></span>
+            </div>
         </div>
-
-        </div>
+        <div class="right">
     
-        <div class="last hidden" id="sh">
-            <span class="o f">Main Menu</span>
-            <span class="o">Attestation</span>
-            <span class="o">Courses</span>
-            <a routerLink="/files" style="text-decoration: none; color: inherit;">
-                <span class="o">Files</span>
-            </a>
-            <span class="e o" onclick="document.cookie='userPassword=;expires=Thu; 01 Jan 1970; path=/'; location.reload()">Log out</span>
+            <div  class="header-link">
+                <span>Links</span>
+            </div>
+    
+            <div class="header-link">
+                <span>About us</span>
+            </div>
+    
+            <div class="header-link">
+                <span>Anothers</span>
+            </div>
+        
+            <div class="right-menu">
+                <input type="text" class="search" placeholder="search">
+            </div>
+        </div>
+    </header>
+    
+    <div class="menu hidden" id="menu">
+        <div class="menu-contents">
+            <div class="menu-content end">
+                <span class="section">Main Menu</span>
+            </div>
+            <div class="menu-content end">
+                <span class="section">Attestation</span>
+            </div>
+            <div class="menu-content end">
+                <span class="section">Courses</span>
+            </div>
+            <div class="menu-content end">
+                <a routerLink="/student-files" style="text-decoration: none; color: inherit;">
+                    <span class="section">Files</span>
+                </a>
+            </div>
+            <div class="menu-content end">
+                <span class="section" (click)="logout()">Log out</span>
+            </div>
         </div>
     </div>
-
-    <header id="background">
-        <h1>{{ title }}, {{ u.name }}</h1>
-    </header>
-
+    
     <main>
-        <h2>News</h2>
+        <div class="main-header block">
+            <h2>{{ title }},</h2>
+            <h1 class="name"> {{ u.name }}</h1>
+        </div>
+    
+        <h4>News</h4>
         <div class="news block">
             <div class="new" *ngFor="let n of news">
                 <h3> {{ n.title }} </h3>
                 <h4> {{ n.body }} </h4>
             </div>
         </div>
-
-        <h2>Schedule</h2>
+        <h4>Schedule</h4>
         <div class="schedule block">
             <div class="days">
                 <div class="x">
-
+    
                 </div>
-                <div class="day"  [style]="0 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="0 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Пн
                 </div>
-                <div class="day"  [style]="1 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="1 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Вт
                 </div>
-                <div class="day"  [style]="2 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="2 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Ср
                 </div>
-                <div class="day"  [style]="3 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="3 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Чт
                 </div>
-                <div class="day"  [style]="4 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="4 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Пт
                 </div>
-                <div class="day"  [style]="5 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="5 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Сб
                 </div>
-                <div class="day"  [style]="6 == day ? 'background-color: rgb(225,225,225)' : ''">
+                <div class="day"  [style]="6 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
                     Вс
                 </div>
             </div>
             <div class="column">
                 <div *ngFor="let y of bnums" class="row">
-                    <div class="left" [style]="y + 8 == hour ? 'background-color: rgb(225,225,225)' : ''">
+                    <div class="left" [style]="y + 8 == hour ? 'background-color: rgb(225,225,225); color: black;' : ''">
                         <span>
                             {{y+8}} : 00 
                         </span>
                     </div>
-
+    
                     <div *ngFor="let x of anums" class="object">
                         <div *ngIf="!sch[y][x]" class="nothing" [style]="x == day && y + 8 == hour ? 'background-color: rgb(225,225,225)' : ''">
                             <div *ngIf="x == day && y + 8 ==  hour">
@@ -107,10 +113,4 @@
             </div>
         </div>
     </main>
-
-    <footer class="foot">
-        <div>
-            <span>Copyrigths ©</span>
-        </div>
-    </footer>
 </div>

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: FirstPageComponent, pathMatch: 'full' },
   { path: 'login', component: InitialComponent, pathMatch: 'full' },
   { path: 'welcome', component: WelcomeComponent, pathMatch: 'full' },
-  { path: 'files', component: CourseFilesComponent, pathMatch: 'full' }
+  { path: 'student-files', component: CourseFilesComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

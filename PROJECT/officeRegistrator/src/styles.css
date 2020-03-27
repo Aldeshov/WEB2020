@@ -10,7 +10,7 @@ app-first-page {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(#5ebdf7,#d6e4ec);
+    background: linear-gradient(#404243, #d7dadc);
 }
 
 app-initial {
@@ -20,7 +20,7 @@ app-initial {
     flex-flow: column wrap;
     align-items: center;
     justify-content: space-around;
-    background: linear-gradient(#5ebdf7,#d6e4ec);
+    background: linear-gradient(#404243, #d7dadc);
 }
 
 app-welcome {
