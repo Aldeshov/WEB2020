@@ -19,7 +19,6 @@ export class WelcomeComponent implements OnInit {
   u: User = null;
 
   news: News[] = [];
-  type: String = "null";
   title: String = "Welcome";
 
   day = new Date().getDay() - 1;
@@ -78,8 +77,6 @@ export class WelcomeComponent implements OnInit {
       {
         this.u = (<Student> u);
 
-        this.type = "Student";
-
         for(let i = 0; i < (<Student> u).courses.length; i++)
         {
           for(let j = 0; j < (<Student> u).courses[i].schedule.length; j++)
@@ -93,8 +90,6 @@ export class WelcomeComponent implements OnInit {
         if(u.type == "Teacher")
         {
           this.u = (<Teacher> u);
-
-          this.type = "Teacher";
 
           this.userService.getTeacherCourses((<Teacher> this.u).id).subscribe(cs => this.teachersch(cs));
         }
@@ -125,33 +120,5 @@ export class WelcomeComponent implements OnInit {
         this.sch[courses[i].schedule[j][0]][courses[i].schedule[j][1]] = courses[i];
       }
     }
-  }
-  
-  modify(){
-    if(document.getElementById('menu').classList.contains('hidden'))
-    {
-      document.getElementById('menu').classList.remove('hidden');
-      document.getElementById('x1').classList.remove('before1');
-      document.getElementById('x').classList.remove('before');
-      document.getElementById('x2').classList.remove('before2');
-      document.getElementById('x1').classList.add('after1');
-      document.getElementById('x').classList.add('after');
-      document.getElementById('x2').classList.add('after2');
-    }
-    else
-    {
-      document.getElementById('menu').classList.add('hidden');
-      document.getElementById('x1').classList.remove('after1');
-      document.getElementById('x').classList.remove('after');
-      document.getElementById('x2').classList.remove('after2');
-      document.getElementById('x1').classList.add('before1');
-      document.getElementById('x').classList.add('before');
-      document.getElementById('x2').classList.add('before2');
-    }
-  }
-
-  logout() {
-    document.cookie='userPassword=;expires=Thu; 01 Jan 1970; path=/'; 
-    location.reload()
   }
 }

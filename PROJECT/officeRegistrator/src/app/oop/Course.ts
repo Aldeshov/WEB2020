@@ -1,12 +1,11 @@
-import { CourseFile } from './CourseFile'
 import { Teacher } from './Teacher';
 
 export class Course 
 {
-	id: String;
-	name: String;
+	id: string;
+	name: string;
 	credits: number;
 	schedule: number[][] = [];
 	teacher: Teacher;
-	room: String;
+	room: string;
 }

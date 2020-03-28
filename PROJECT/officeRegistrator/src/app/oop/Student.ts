@@ -3,10 +3,10 @@ import { Course } from './Course'
 
 export class Student extends User 
 {
-	id: String;
-	login: String;
-	password: String;
-	name: String;
+	id: string;
+	login: string;
+	password: string;
+	name: string;
 	courses: Course[];
-	type: String;
+	type: string;
 }

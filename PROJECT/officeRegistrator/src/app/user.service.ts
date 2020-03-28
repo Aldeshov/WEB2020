@@ -21,8 +21,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUser(log: String, pass: String): Observable<User> {
-    return this.http.get<User[]>(this.usersUrl).pipe(map(users => users.find(s => s.login == log && s.password == pass),catchError(this.handleError<User[]>('coursesUrl', []))))
+  getUser(log: string, pass: string): Observable<User> {
+    return this.http.get<User[]>(this.usersUrl).pipe(map(users => users.find(s => s.login == log && s.password == pass),catchError(this.handleError<User[]>('usersUrl', []))))
   }
 
   getNews(): Observable<News[]> {
@@ -33,11 +33,11 @@ export class UserService {
     return this.http.get<Course[]>(this.coursesUrl).pipe(catchError(this.handleError<Course[]>('coursesUrl', [])));
   }
 
-  getFiles(): Observable<CourseFile[]> {
-    return this.http.get<CourseFile[]>(this.filesUrl).pipe(catchError(this.handleError<CourseFile[]>('filesUrl', [])));
+  getFiles(id: string): Observable<CourseFile[]> {
+    return this.http.get<CourseFile[]>(`${this.filesUrl}/?path=${id}`).pipe(catchError(this.handleError<CourseFile[]>('coursesUrl', [])));
   }
 
-  getTeacherCourses(teacherid: String): Observable<Course[]> {
+  getTeacherCourses(teacherid: string): Observable<Course[]> {
     return this.http.get<Course[]>(this.coursesUrl).pipe(map(courses => courses.filter(c => c.teacher.id == teacherid),catchError(this.handleError<Course[]>('coursesUrl', []))))
   }
 

@@ -18,7 +18,6 @@ export class InitialComponent implements OnInit {
     if(this.userService.getCookie("userName") != "")
     {
       (<HTMLInputElement> document.getElementById("inname")).value = this.userService.getCookie("userName");
-      this.userService.setCookie("userName",this.userService.getCookie("userName"),0.001);
     }
   }
 

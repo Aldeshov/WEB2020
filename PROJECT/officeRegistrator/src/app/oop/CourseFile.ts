@@ -1,7 +1,6 @@
 export class CourseFile 
 {
-	id: String;
-	name: String;
-	path: String;
-	course: String;
+	id: string;
+	name: string;
+	path: string;
 }

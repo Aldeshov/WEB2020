@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryDataService } from './in-memory-data.service';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { CourseFilesComponent } from './course-files/course-files.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CourseFilesComponent } from './course-files/course-files.component';
     WelcomeComponent,
     InitialComponent,
     FirstPageComponent,
-    CourseFilesComponent
+    CourseFilesComponent,
+    HeaderComponent
   ],
   imports: [
     HttpClientModule,

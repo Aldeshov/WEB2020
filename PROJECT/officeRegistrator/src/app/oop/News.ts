@@ -1,7 +1,7 @@
 export class News 
 {
-    id: String;
-    title: String;
-    body: String;
+    id: string;
+    title: string;
+    body: string;
     date: Date;
 }

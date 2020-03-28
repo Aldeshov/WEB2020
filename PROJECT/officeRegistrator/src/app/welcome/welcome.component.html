@@ -1,54 +1,5 @@
-<div [class.hidden]="!u" class="welcome-content" id="welcome">
-    <header>
-        <div class="btn" (click)="modify()">
-            <div>
-                <span class="ml before1" id="x1"></span>
-                <span class="ml before" id="x"></span>
-                <span class="ml before2" id="x2"></span>
-            </div>
-        </div>
-        <div class="right">
-    
-            <div  class="header-link">
-                <span>Links</span>
-            </div>
-    
-            <div class="header-link">
-                <span>About us</span>
-            </div>
-    
-            <div class="header-link">
-                <span>Anothers</span>
-            </div>
-        
-            <div class="right-menu">
-                <input type="text" class="search" placeholder="search">
-            </div>
-        </div>
-    </header>
-    
-    <div class="menu hidden" id="menu">
-        <div class="menu-contents">
-            <div class="menu-content end">
-                <span class="section">Main Menu</span>
-            </div>
-            <div class="menu-content end">
-                <span class="section">Attestation</span>
-            </div>
-            <div class="menu-content end">
-                <span class="section">Courses</span>
-            </div>
-            <div class="menu-content end">
-                <a routerLink="/student-files" style="text-decoration: none; color: inherit;">
-                    <span class="section">Files</span>
-                </a>
-            </div>
-            <div class="menu-content end">
-                <span class="section" (click)="logout()">Log out</span>
-            </div>
-        </div>
-    </div>
-    
+<div [class.hidden]="!u" class="welcome-content" id="welcome">    
+    <app-header></app-header>
     <main>
         <div class="main-header block">
             <h2>{{ title }},</h2>
@@ -69,25 +20,25 @@
     
                 </div>
                 <div class="day"  [style]="0 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Пн
+                    Monday
                 </div>
                 <div class="day"  [style]="1 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Вт
+                    Tuesday
                 </div>
                 <div class="day"  [style]="2 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Ср
+                    Wednesday
                 </div>
                 <div class="day"  [style]="3 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Чт
+                    Thursday
                 </div>
                 <div class="day"  [style]="4 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Пт
+                    Friday
                 </div>
                 <div class="day"  [style]="5 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Сб
+                    Saturday
                 </div>
                 <div class="day"  [style]="6 == day ? 'background-color: rgb(225,225,225); color: black;' : ''">
-                    Вс
+                    Sunday
                 </div>
             </div>
             <div class="column">

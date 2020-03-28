@@ -18,15 +18,18 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
     let Files: CourseFile[] = [
-      {id: 'ID000001',course: 'DISA0001',name: 'file1', path: '/'},
-      {id: 'ID000002',course: 'DISA0001',name: 'file2', path: '/Files'},
-      {id: 'ID000003',course: 'DISA0001',name: 'file3', path: '/Others'},
-      {id: 'ID000004',course: 'DISA0001',name: 'file4', path: '/Files/1'},
-      {id: 'ID000005',course: 'DISA0001',name: 'file5', path: '/Others/2'},
-      {id: 'ID000006',course: 'DISA0001',name: 'file6', path: '/Another/3'},
-      {id: 'ID000007',course: 'DISA0002',name: 'file7', path: '/'},
-      {id: 'ID000008',course: 'DISA0002',name: 'file8', path: '/Other'},
-      {id: 'ID000009',course: 'DISA0002',name: 'file9', path: '/'}
+      {id: 'ID000001',name: 'file1.xlsx', path: '/DISA0001'},
+      {id: 'ID000002',name: 'file2.docx', path: '/DISA0001/Files'},
+      {id: 'ID000003',name: 'file3.pptx', path: '/DISA0001/Others'},
+      {id: 'ID000004',name: 'file4.txt', path: '/DISA0001/Files/1'},
+      {id: 'ID000005',name: 'file5.xml', path: '/DISA0001/Others/2'},
+      {id: 'ID000006',name: 'file6.ppt', path: '/DISA0001/Another/3'},
+      {id: 'ID000007',name: 'file7.docx', path: '/DISA0002'},
+      {id: 'ID000008',name: 'file8', path: '/DISA0002/Other'},
+      {id: 'ID000009',name: 'file9.md', path: '/DISA0002'},
+      {id: 'ID000010',name: 'f.pdf', path: '/DISA0003/pdf'},
+      {id: 'ID000011',name: 'files.zip', path: '/DISA0003'},
+      {id: 'ID000012',name: 'juhygtfrcdfcgvsdhbfjgh', path: '/DISA0001/agfdxfcgvh/bnhbgvfcdxfcgvhbj/c/dhgtvfcdxfgvhbjnk/e/f/g/hgvfcdxfcgvhbjh/i/jhbgvfcdefghbjn/k/l/m/n/o/p/q/rgvfcdcgvbhjnkhgfcdxd/s/t/ukmjnhbgvfcghnj/v/w/x/y/z'}
     ];
 
     let Teachers: Teacher[] = [

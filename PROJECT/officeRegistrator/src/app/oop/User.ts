@@ -1,8 +1,8 @@
 export class User
 {
-    id: String;
-	login: String;
-    password: String;
-    type: String;
-    name: String;
+    id: string;
+	login: string;
+    password: string;
+    type: string;
+    name: string;
 }

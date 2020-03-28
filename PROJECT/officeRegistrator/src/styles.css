@@ -22,8 +22,3 @@ app-initial {
     justify-content: space-around;
     background: linear-gradient(#404243, #d7dadc);
 }
-
-app-welcome {
-    width: 100%;
-    height: 100%;
-}
