@@ -84,7 +84,6 @@ export class CourseFilesComponent implements OnInit {
   }
 
   getFiles(obj: Object): void {
-
     if(obj.type == "#/Course")
     {
       this.userService.getFiles(obj.id).subscribe(files => this.get(files));

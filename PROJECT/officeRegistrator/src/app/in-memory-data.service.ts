@@ -28,8 +28,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 'ID000008',name: 'file8', path: '/DISA0002/Other'},
       {id: 'ID000009',name: 'file9.md', path: '/DISA0002'},
       {id: 'ID000010',name: 'f.pdf', path: '/DISA0003/pdf'},
-      {id: 'ID000011',name: 'files.zip', path: '/DISA0003'},
-      {id: 'ID000012',name: 'juhygtfrcdfcgvsdhbfjgh', path: '/DISA0001/agfdxfcgvh/bnhbgvfcdxfcgvhbj/c/dhgtvfcdxfgvhbjnk/e/f/g/hgvfcdxfcgvhbjh/i/jhbgvfcdefghbjn/k/l/m/n/o/p/q/rgvfcdcgvbhjnkhgfcdxd/s/t/ukmjnhbgvfcghnj/v/w/x/y/z'}
+      {id: 'ID000011',name: 'files.zip', path: '/DISA0003'}
     ];
 
     let Teachers: Teacher[] = [

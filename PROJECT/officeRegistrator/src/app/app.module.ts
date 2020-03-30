@@ -11,6 +11,9 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { FirstPageComponent } from './first-page/first-page.component';
 import { CourseFilesComponent } from './course-files/course-files.component';
 import { HeaderComponent } from './header/header.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { NewsComponent } from './news/news.component';
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { HeaderComponent } from './header/header.component';
     InitialComponent,
     FirstPageComponent,
     CourseFilesComponent,
-    HeaderComponent
+    HeaderComponent,
+    ScheduleComponent,
+    NewsComponent,
+    TitleComponent
   ],
   imports: [
     HttpClientModule,

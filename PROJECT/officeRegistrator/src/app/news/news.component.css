@@ -1,0 +1,20 @@
+.block {
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    background-color: #232324;
+    color: rgb(200, 200, 200);
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+}
+
+.new {
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+.new:hover {
+    background-color: rgb(150,150,150);
+    color: rgb(50, 50, 50);
+    cursor: pointer;
+}

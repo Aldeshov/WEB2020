@@ -52,4 +52,9 @@ export class HeaderComponent implements OnInit {
   mainmenu(){
     this.router.navigate(['/welcome']);
   }
+
+  //Temp
+  alert(str){
+    alert(str);
+  }
 }
