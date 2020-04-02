@@ -1,11 +1,12 @@
 .block {
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
-    background-color: #232324;
+    background-color: #1a1a1b;
+    border: 1px solid #343536;
+    border-radius: 10px;
     color: rgb(200, 200, 200);
 }
 
 .name {
-    color: #4d8973;
+    color: #0079d3;
 }
 
 .main-header {
@@ -13,5 +14,5 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    min-width: 350px;
+    min-width: 500px;
 }
