@@ -15,11 +15,11 @@ export class VacancyService {
   private vacancyUrl = 'vacancies';
   private companyUrl = 'companies';
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'content-type': 'application/json'
-    })
-  }
+  // private httpOptions = {
+  //   headers: new HttpHeaders({
+  //     'content-type': 'application/json'
+  //   })
+  // }
 
   constructor(private http: HttpClient) {  }
 
@@ -30,7 +30,7 @@ export class VacancyService {
   // }
 
   getCompaines():Observable<Company[]> {
-    return this.http.get<Company[]>(this.baseurl + this.companyUrl, this.httpOptions).pipe(catchError(this.handleError<Company[]>('companyUrl')));
+    return this.http.get<Company[]>(this.baseurl + this.companyUrl).pipe(catchError(this.handleError<Company[]>('companyUrl')));
   }
 
   // getCompany(id: string):Observable<Company> {
