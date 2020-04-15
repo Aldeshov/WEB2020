@@ -1,6 +1,10 @@
 from django.shortcuts import render
+import json
 from django.http.response import HttpResponse, JsonResponse
 from .models import Product, Category
+from app.serializers import CategorySerializer
+
+from django.views.decorators.csrf import csrf_exempt
 
 
 def to_json_category(item):
@@ -24,9 +28,19 @@ def to_json_product(item):
     }
 
 
+@csrf_exempt
 def categories(request):
-    ans = [to_json_category(n) for n in Category.objects.all()]
-    return JsonResponse(ans, safe=False)
+    if request.method == 'GET':
+        get = Category.objects.all()
+        serializer = CategorySerializer(get, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    elif request.method == 'POST':
+        request_body = json.loads(request.body)
+        serializer = CategorySerializer(data=request_body)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse({'error': serializer.errors})
 
 
 def products(request):
@@ -34,12 +48,28 @@ def products(request):
     return JsonResponse(ans, safe=False)
 
 
+@csrf_exempt
 def category(request, id):
     try:
         ans = Category.objects.get(id=id)
     except Exception as e:
         return JsonResponse({"error": str(e)}, safe=False)
-    return JsonResponse(to_json_category(ans), safe=False)
+
+    if request.method == 'GET':
+        serializer = CategorySerializer(ans)
+        return JsonResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        request_body = json.loads(request.body)
+        serializer = CategorySerializer(instance=ans, data=request_body)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse({'error': serializer.errors})
+
+    elif request.method == 'DELETE':
+        ans.delete()
+        return JsonResponse({'deleted': True})
 
 
 def product(request, id):
