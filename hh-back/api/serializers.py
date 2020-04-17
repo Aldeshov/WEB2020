@@ -16,10 +16,10 @@ class CompanySerializer(serializers.Serializer):
         return company
 
     def update(self, instance, validated_data):
-        instance.name = validated_data.get('name', instance.name)
-        instance.description = validated_data.get('description', instance.name)
-        instance.city = validated_data.get('city', instance.name)
-        instance.address = validated_data.get('address', instance.name)
+        instance.name = validated_data.get('name')
+        instance.description = validated_data.get('description')
+        instance.city = validated_data.get('city')
+        instance.address = validated_data.get('address')
         instance.save()
         return instance
 
@@ -37,4 +37,4 @@ class CompanyVacanciesSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Company
-        fields = ('id', 'name', 'description', 'city', 'address', 'products')
+        fields = ('id', 'name', 'description', 'city', 'address', 'companies')

@@ -12,26 +12,6 @@ from .models import Company, Vacancy
 from api.serializers import CompanySerializer, VacancySerializer, CompanyVacanciesSerializer
 
 
-def to_json_company(item):
-    return {
-        "id": item.id,
-        "name": item.name,
-        "description": item.description,
-        "city": item.city,
-        "address": item.address
-    }
-
-
-def to_json_vacancy(item):
-    return {
-        "id": item.id,
-        "name": item.name,
-        "description": item.description,
-        "salary": item.salary,
-        "company": to_json_company(item.company)
-    }
-
-
 class CompaniesAPIView(APIView):
     def get(self, request):
         objects = Company.objects.all()
@@ -132,12 +112,13 @@ def sort(item):
 @api_view(['GET'])
 def top_ten(request):
     if request.method == 'GET':
-        ans = [to_json_vacancy(x) for x in Vacancy.objects.all()]
+        ans = Vacancy.objects.all()
         ans.sort(key=sort, reverse=True)
         ten = []
         for i in range(0, 10):
             ten.insert(i, ans[i])
-        return JsonResponse(ten, safe=False)
+        serializer = CompanySerializer(data=ten, many=True)
+        return JsonResponse(serializer, safe=False)
 
 
 # Adding Companies & Vacancies
@@ -168,3 +149,21 @@ def top_ten(request):
 #         c.city = 'City'
 #         c.save()
 #         print('--OK--')
+#
+# def to_json_company(item):
+#     return {
+#         "id": item.id,
+#         "name": item.name,
+#         "description": item.description,
+#         "city": item.city,
+#         "address": item.address
+#     }
+#
+# def to_json_vacancy(item):
+#     return {
+#         "id": item.id,
+#         "name": item.name,
+#         "description": item.description,
+#         "salary": item.salary,
+#         "company": to_json_company(item.company)
+#     }

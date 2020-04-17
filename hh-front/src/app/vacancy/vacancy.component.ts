@@ -19,5 +19,4 @@ export class VacancyComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('companyID');
     this.service.companyVacancy(id).subscribe(v => this.vacancies = v);
   }
-
 }

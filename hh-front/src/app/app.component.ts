@@ -7,6 +7,7 @@ import { VacancyService } from "./vacancy.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = "Office"
   logged = false;
 
   username = '';
@@ -38,5 +39,4 @@ export class AppComponent {
     localStorage.clear();
     this.logged = false;
   }
-
 }
