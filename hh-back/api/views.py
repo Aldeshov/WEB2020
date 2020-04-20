@@ -96,8 +96,9 @@ def vacancy_detail(request, vacancy_id):
 def company_vacancies(request, company_id):
     if request.method == 'GET':
         try:
-            ans = [to_json_vacancy(x) for x in Vacancy.objects.filter(company=Company.objects.get(id=company_id))]
-            return JsonResponse(ans, safe=False)
+            ans = [x for x in Vacancy.objects.filter(company=Company.objects.get(id=company_id))]
+            ser = CompanyVacanciesSerializer(ans, many=True)
+            return Response(ser.data)
         except Exception as e:
             return JsonResponse({"!ERROR": str(e)}, safe=False)
 
@@ -149,21 +150,3 @@ def top_ten(request):
 #         c.city = 'City'
 #         c.save()
 #         print('--OK--')
-#
-# def to_json_company(item):
-#     return {
-#         "id": item.id,
-#         "name": item.name,
-#         "description": item.description,
-#         "city": item.city,
-#         "address": item.address
-#     }
-#
-# def to_json_vacancy(item):
-#     return {
-#         "id": item.id,
-#         "name": item.name,
-#         "description": item.description,
-#         "salary": item.salary,
-#         "company": to_json_company(item.company)
-#     }
