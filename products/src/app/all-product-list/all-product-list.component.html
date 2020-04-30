@@ -2,9 +2,9 @@
     <h2 *ngIf="products.length">Products</h2>
 </div>
 
-<div class="products">
+<div *ngIf="products" class="products">
     <a *ngFor="let product of products" routerLink="/products/{{product.id}}" class="product">
-        <img [src]="product.gallery[0]" height="288.5px"/>
+        <img [src]="product.gallery" height="288.5px"/>
         <span> {{ product.name }}</span>
     </a>
 </div>
