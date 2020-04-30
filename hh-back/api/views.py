@@ -1,15 +1,13 @@
-import json
+from random import randrange
 
-from django.shortcuts import render
-from random import *
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.http.response import HttpResponse, JsonResponse
+from django.http.response import JsonResponse
 
 from .models import Company, Vacancy
-from api.serializers import CompanySerializer, VacancySerializer, CompanyVacanciesSerializer
+from api.serializers import CompanySerializer, VacancySerializer
 
 
 class CompaniesAPIView(APIView):
@@ -23,7 +21,7 @@ class CompaniesAPIView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response({'error': serializer.errors},
+        return Response({'!ERROR': serializer.errors},
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -32,7 +30,7 @@ class CompanyDetailAPIView(APIView):
         try:
             return Company.objects.get(id=id)
         except Company.DoesNotExist as e:
-            return Response({'error': str(e)})
+            return Response({'!ERROR': str(e)})
 
     def get(self, request, company_id):
         company = self.get_object(company_id)
@@ -45,7 +43,7 @@ class CompanyDetailAPIView(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response({'error': serializer.errors})
+        return Response({'!ERROR': serializer.errors})
 
     def delete(self, request, company_id):
         company = self.get_object(company_id)
@@ -65,7 +63,7 @@ def vacancy_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response({'error': serializer.errors},
+        return Response({'!ERROR': serializer.errors},
                         status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
@@ -85,7 +83,7 @@ def vacancy_detail(request, vacancy_id):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response({'error': serializer.errors})
+        return Response({'!ERROR': serializer.errors})
 
     elif request.method == 'DELETE':
         vacancy.delete()
@@ -97,56 +95,44 @@ def company_vacancies(request, company_id):
     if request.method == 'GET':
         try:
             ans = [x for x in Vacancy.objects.filter(company=Company.objects.get(id=company_id))]
-            ser = CompanyVacanciesSerializer(ans, many=True)
+            ser = VacancySerializer(ans, many=True)
             return Response(ser.data)
         except Exception as e:
             return JsonResponse({"!ERROR": str(e)}, safe=False)
 
 
-def sort(item):
-    try:
-        return int(item['salary'])
-    except KeyError:
-        return 0
-
-
 @api_view(['GET'])
 def top_ten(request):
     if request.method == 'GET':
-        ans = Vacancy.objects.all()
-        ans.sort(key=sort, reverse=True)
-        ten = []
-        for i in range(0, 10):
-            ten.insert(i, ans[i])
-        serializer = CompanySerializer(data=ten, many=True)
+        objects = Vacancy.objects.all().order_by('-salary')[:10]
+        serializer = CompanySerializer(data=objects, many=True)
         return JsonResponse(serializer, safe=False)
 
 
-# Adding Companies & Vacancies
-# def add_vacancies(count):
-#     for i in range(len(Vacancy.objects.all()), len(Vacancy.objects.all()) + count):
-#         r = randrange(1, 15)
-#         c = randrange(1, len(Company.objects.all()) + 1)
-#         print('--Created random (r): ' + str(r))
-#         print('--Created random (c): ' + str(c))
-#         v = Vacancy()
-#         print('--Created vacancy ID: ' + str(i))
-#         v.name = 'Vacancy ' + str(i)
-#         v.salary = r * 1000
-#         v.company = Company.objects.get(id=c)
-#         v.description = 'Description'
-#         v.save()
-#         print('--OK--')
-#
-#
-# def add_companies(count):
-#     print(len(Company.objects.all()))
-#     for i in range(len(Company.objects.all()), len(Company.objects.all()) + count):
-#         c = Company()
-#         print('--Created company ID: ' + str(i))
-#         c.name = 'Company ' + str(i)
-#         c.description = 'Description'
-#         c.address = "Address"
-#         c.city = 'City'
-#         c.save()
-#         print('--OK--')
+def add_vacancies(count):
+    for i in range(len(Vacancy.objects.all()), len(Vacancy.objects.all()) + count):
+        r = randrange(1, 15)
+        c = randrange(1, len(Company.objects.all()) + 1)
+        print('--Created random (r): ' + str(r))
+        print('--Created random (c): ' + str(c))
+        v = Vacancy()
+        print('--Created vacancy ID: ' + str(i))
+        v.name = 'Vacancy ' + str(i)
+        v.salary = r * 1000
+        v.company = Company.objects.get(id=c)
+        v.description = 'Description'
+        v.save()
+        print('--OK--')
+
+
+def add_companies(count):
+    print(len(Company.objects.all()))
+    for i in range(len(Company.objects.all()), len(Company.objects.all()) + count):
+        c = Company()
+        print('--Created company ID: ' + str(i))
+        c.name = 'Company ' + str(i)
+        c.description = 'Description'
+        c.address = "Address"
+        c.city = 'City'
+        c.save()
+        print('--OK--')

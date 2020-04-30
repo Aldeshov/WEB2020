@@ -1,7 +1,7 @@
 <h2>Companies</h2>
 
-<div *ngFor="let c of companies">
-    <a routerLink="/companies/{{c.id}}/vacancies">
+<div *ngIf="companies.length">
+    <a  *ngFor="let c of companies" routerLink="/companies/{{c.id}}/vacancies">
         {{ c.name }}
     </a>
 </div>

@@ -30,11 +30,3 @@ class VacancySerializer(serializers.ModelSerializer):
     class Meta:
         model = Vacancy
         fields = ('id', 'name', 'description', 'salary', 'company_id')
-
-
-class CompanyVacanciesSerializer(serializers.ModelSerializer):
-    vacancies = VacancySerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Company
-        fields = ('id', 'name', 'description', 'city', 'address', 'vacancies')
